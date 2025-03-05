@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
@@ -6,6 +5,7 @@ interface AnimatedTransitionProps {
   children: ReactNode;
   className?: string;
   type?: 'default' | 'fade' | 'slide' | 'scale' | 'rotate';
+  background?: 'none' | 'dots' | 'grid' | 'waves' | 'gradient';
 }
 
 const variants = {
@@ -64,10 +64,19 @@ const transitions = {
   }
 };
 
+const backgrounds = {
+  none: '',
+  dots: 'bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[length:20px_20px]',
+  grid: 'bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:20px_20px]',
+  waves: 'bg-[url("data:image/svg+xml,%3Csvg width=\'100%25\' height=\'100%25\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cdefs%3E%3Cpattern id=\'smallGrid\' width=\'30\' height=\'30\' patternUnits=\'userSpaceOnUse\'%3E%3Cpath d=\'M 30 0 L 0 0 0 30\' fill=\'none\' stroke=\'%23f0f0f0\' stroke-width=\'0.5\'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'url(%23smallGrid)\'/%3E%3C/svg%3E")]',
+  gradient: 'bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-gray-900 dark:via-blue-950 dark:to-blue-900'
+};
+
 const AnimatedTransition = ({ 
   children, 
   className = '',
-  type = 'default'
+  type = 'default',
+  background = 'none'
 }: AnimatedTransitionProps) => {
   return (
     <motion.div
@@ -76,7 +85,7 @@ const AnimatedTransition = ({
       exit="out"
       variants={variants[type]}
       transition={transitions[type]}
-      className={className}
+      className={`${backgrounds[background]} ${className}`}
     >
       {children}
     </motion.div>

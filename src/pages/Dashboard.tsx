@@ -89,15 +89,19 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <AnimatedTransition>
-      <div className="container mx-auto px-4 py-8">
+    <AnimatedTransition type="fade" background="gradient">
+      <div className="container mx-auto px-4 py-8 relative">
+        {/* Decorative elements */}
+        <div className="absolute top-10 right-10 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-40 left-20 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl -z-10"></div>
+        
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold">Dashboard</h1>
             <p className="text-muted-foreground">Welcome back, John</p>
           </div>
           <div className="mt-4 md:mt-0 flex space-x-2">
-            <Button variant="outline" size="sm" className="rounded-full">
+            <Button variant="outline" size="sm" className="rounded-full backdrop-blur-sm bg-white/50 border-white/20">
               <Bell className="h-4 w-4 mr-2" />
               Notifications
             </Button>
@@ -108,7 +112,7 @@ const Dashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-          <TabsList className="grid w-full md:w-auto md:inline-grid grid-cols-3 md:grid-cols-3">
+          <TabsList className="grid w-full md:w-auto md:inline-grid grid-cols-3 md:grid-cols-3 backdrop-blur-sm bg-white/50 border border-white/20">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="courses">Courses</TabsTrigger>
             <TabsTrigger value="forums">Forums</TabsTrigger>
@@ -117,7 +121,7 @@ const Dashboard = () => {
           <TabsContent value="overview" className="space-y-8">
             {/* Stats overview */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card>
+              <Card className="backdrop-blur-sm bg-white/60 border-white/20">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium">Enrolled Courses</CardTitle>
                 </CardHeader>
@@ -132,7 +136,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="backdrop-blur-sm bg-white/60 border-white/20">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium">Upcoming Sessions</CardTitle>
                 </CardHeader>
@@ -147,7 +151,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="backdrop-blur-sm bg-white/60 border-white/20">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium">Forum Activity</CardTitle>
                 </CardHeader>
@@ -173,7 +177,7 @@ const Dashboard = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {enrolledCourses.map((course) => (
-                  <Card key={course.id} className="overflow-hidden">
+                  <Card key={course.id} className="overflow-hidden backdrop-blur-sm bg-white/60 border-white/20">
                     <div className="flex h-full">
                       <div className="w-1/3 h-auto">
                         <img 
@@ -237,7 +241,7 @@ const Dashboard = () => {
                   });
 
                   return (
-                    <Card key={session.id}>
+                    <Card key={session.id} className="backdrop-blur-sm bg-white/60 border-white/20">
                       <CardHeader className="pb-2">
                         <div className="flex justify-between items-start">
                           <Badge variant="outline">
@@ -271,7 +275,7 @@ const Dashboard = () => {
             {/* Recent Activity */}
             <div>
               <h2 className="text-xl font-bold mb-4">Recent Activity</h2>
-              <Card>
+              <Card className="backdrop-blur-sm bg-white/60 border-white/20">
                 <CardContent className="p-0">
                   <div className="divide-y divide-border">
                     {recentActivities.map((activity) => (
@@ -311,7 +315,7 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="courses">
-            <div className="text-center py-16">
+            <div className="text-center py-16 backdrop-blur-sm bg-white/30 rounded-lg border border-white/20">
               <h2 className="text-xl font-bold mb-2">Courses Tab Content</h2>
               <p className="text-muted-foreground mb-4">This tab would show all enrolled courses with detailed progress and materials.</p>
               <Button>Explore More Courses</Button>
@@ -319,7 +323,7 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="forums">
-            <div className="text-center py-16">
+            <div className="text-center py-16 backdrop-blur-sm bg-white/30 rounded-lg border border-white/20">
               <h2 className="text-xl font-bold mb-2">Forums Tab Content</h2>
               <p className="text-muted-foreground mb-4">This tab would show your forum activity, subscribed threads, and recent discussions.</p>
               <Button>Go to Forums</Button>
