@@ -14,6 +14,8 @@ import Dashboard from "./pages/Dashboard";
 import Forums from "./pages/Forums";
 import Courses from "./pages/Courses";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
+import Teacher from "./pages/Teacher";
 
 // Layout components
 import Navbar from "./components/layout/Navbar";
@@ -34,6 +36,8 @@ const AnimatedRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/forums" element={<Forums />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/teacher" element={<Teacher />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
