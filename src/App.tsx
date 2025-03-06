@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,6 +18,7 @@ import CourseDetail from "./pages/CourseDetail";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import Teacher from "./pages/Teacher";
+import NewDiscussion from "./pages/NewDiscussion";
 
 // Layout components
 import Navbar from "./components/layout/Navbar";
@@ -43,6 +43,7 @@ const AnimatedRoutes = () => {
         <Route path="/courses/:id" element={<CourseDetail />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/teacher" element={<Teacher />} />
+        <Route path="/forums/new" element={<NewDiscussion />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>

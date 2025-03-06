@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, User, Book, MessageCircle, Search } from 'lucide-react';
@@ -6,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useLanguage } from '@/contexts/LanguageContext';
+import NotificationBell from '@/components/notifications/NotificationBell';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,6 +58,7 @@ const Navbar = () => {
             <Link to="/dashboard" className="text-foreground/80 hover:text-primary transition-colors">
               {t('dashboard')}
             </Link>
+            <NotificationBell />
             <Link to="/login">
               <Button variant="ghost" size="sm" className="rounded-full">
                 {t('login')}
@@ -83,7 +84,6 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Mobile menu */}
       {isMobile && isMenuOpen && (
         <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-sm z-40 animate-fade-in">
           <div className="container px-4 py-6 flex flex-col space-y-6">
