@@ -5,11 +5,13 @@ import { Menu, X, User, Book, MessageCircle, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +39,7 @@ const Navbar = () => {
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Search forums, courses..."
+                placeholder={t('searchPlaceholder')}
                 className="pr-8 pl-10 py-2 w-full rounded-full bg-secondary/50"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -48,22 +50,22 @@ const Navbar = () => {
         {!isMobile && (
           <nav className="hidden md:flex items-center space-x-6">
             <Link to="/forums" className="text-foreground/80 hover:text-primary transition-colors">
-              Forums
+              {t('forums')}
             </Link>
             <Link to="/courses" className="text-foreground/80 hover:text-primary transition-colors">
-              Courses
+              {t('courses')}
             </Link>
             <Link to="/dashboard" className="text-foreground/80 hover:text-primary transition-colors">
-              Dashboard
+              {t('dashboard')}
             </Link>
             <Link to="/login">
               <Button variant="ghost" size="sm" className="rounded-full">
-                Login
+                {t('login')}
               </Button>
             </Link>
             <Link to="/register">
               <Button variant="default" size="sm" className="rounded-full">
-                Register
+                {t('register')}
               </Button>
             </Link>
           </nav>
@@ -88,7 +90,7 @@ const Navbar = () => {
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Search forums, courses..."
+                placeholder={t('searchPlaceholder')}
                 className="pr-8 pl-10 py-2 w-full rounded-full bg-secondary/50"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -101,7 +103,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <MessageCircle className="h-5 w-5 text-primary" />
-                <span>Forums</span>
+                <span>{t('forums')}</span>
               </Link>
               <Link 
                 to="/courses" 
@@ -109,7 +111,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Book className="h-5 w-5 text-primary" />
-                <span>Courses</span>
+                <span>{t('courses')}</span>
               </Link>
               <Link 
                 to="/dashboard" 
@@ -117,16 +119,16 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <User className="h-5 w-5 text-primary" />
-                <span>Dashboard</span>
+                <span>{t('dashboard')}</span>
               </Link>
             </nav>
             
             <div className="flex flex-col space-y-2 mt-auto">
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="outline" className="w-full justify-center">Login</Button>
+                <Button variant="outline" className="w-full justify-center">{t('login')}</Button>
               </Link>
               <Link to="/register" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="default" className="w-full justify-center">Register</Button>
+                <Button variant="default" className="w-full justify-center">{t('register')}</Button>
               </Link>
             </div>
           </div>

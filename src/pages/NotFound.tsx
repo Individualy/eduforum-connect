@@ -6,9 +6,11 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Search, AlertCircle, Home } from "lucide-react";
 import AnimatedTransition from "@/components/ui/AnimatedTransition";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const NotFound = () => {
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     console.error(
@@ -28,23 +30,22 @@ const NotFound = () => {
             <AlertCircle className="h-24 w-24 mx-auto text-primary mb-6" />
             <h1 className="text-6xl font-extrabold tracking-tight mb-2 text-foreground">404</h1>
             <div className="h-1 w-16 bg-primary mx-auto my-6 rounded-full" />
-            <h2 className="text-2xl font-semibold mb-4 text-foreground">Page Not Found</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-foreground">{t('pageNotFound')}</h2>
             <p className="text-muted-foreground max-w-sm mx-auto mb-8">
-              The page you are looking for might have been removed, had its name changed, 
-              or is temporarily unavailable.
+              {t('pageNotFoundDesc')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="default" asChild>
                 <Link to="/" className="flex items-center gap-2">
                   <Home size={18} />
-                  <span>Back to Home</span>
+                  <span>{t('backToHome')}</span>
                 </Link>
               </Button>
               <Button variant="outline" asChild>
                 <Link to="/courses" className="flex items-center gap-2">
                   <Search size={18} />
-                  <span>Browse Courses</span>
+                  <span>{t('browseCourses')}</span>
                 </Link>
               </Button>
             </div>
