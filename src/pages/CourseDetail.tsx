@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
@@ -19,10 +18,9 @@ import {
   Users,
   Download,
   Share2,
-  BookmarkedIcon,
+  Bookmark,
 } from 'lucide-react';
 
-// Mock course data - in a real app, this would come from an API
 interface CourseModule {
   id: string;
   title: string;
@@ -218,12 +216,10 @@ const CourseDetail = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Simulate API fetch
     setLoading(true);
     setTimeout(() => {
       if (id && mockCourseData[id]) {
         setCourse(mockCourseData[id]);
-        // Check if the course has progress, if so, user is enrolled
         setIsEnrolled(mockCourseData[id].progress !== undefined && mockCourseData[id].progress > 0);
       }
       setLoading(false);
@@ -278,7 +274,9 @@ const CourseDetail = () => {
         <div className="container mx-auto px-4 py-8 text-center">
           <h1 className="text-2xl font-bold mb-4">Course Not Found</h1>
           <p className="text-muted-foreground mb-6">The course you're looking for doesn't exist or has been removed.</p>
-          <Button href="/courses">Back to Courses</Button>
+          <Button asChild>
+            <a href="/courses">Back to Courses</a>
+          </Button>
         </div>
       </AnimatedTransition>
     );
@@ -313,7 +311,6 @@ const CourseDetail = () => {
   return (
     <AnimatedTransition>
       <div className="container mx-auto px-4 py-8">
-        {/* Course Header */}
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
             <h1 className="text-3xl font-bold tracking-tight mb-2 sm:mb-0">{course.title}</h1>
@@ -345,9 +342,7 @@ const CourseDetail = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Course Content - Left Column */}
           <div className="md:col-span-2">
-            {/* Course Thumbnail */}
             <div className="rounded-xl overflow-hidden mb-8 w-full aspect-video">
               <img 
                 src={course.thumbnail} 
@@ -356,7 +351,6 @@ const CourseDetail = () => {
               />
             </div>
 
-            {/* Instructor */}
             <div className="flex items-center mb-6">
               <img 
                 src={course.instructor.avatar} 
@@ -369,7 +363,6 @@ const CourseDetail = () => {
               </div>
             </div>
 
-            {/* Course Tabs */}
             <Tabs defaultValue="overview" className="mb-8">
               <TabsList className="mb-4">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -526,7 +519,6 @@ const CourseDetail = () => {
             </Tabs>
           </div>
           
-          {/* Course Sidebar - Right Column */}
           <div className="md:col-span-1">
             <div className="border rounded-xl p-6 sticky top-24">
               {isEnrolled ? (
@@ -578,7 +570,7 @@ const CourseDetail = () => {
                   </Button>
                   
                   <Button variant="outline" className="w-full" onClick={handleBookmark}>
-                    <BookmarkedIcon className="h-4 w-4 mr-2" />
+                    <Bookmark className="h-4 w-4 mr-2" />
                     Save for Later
                   </Button>
                   
