@@ -7,14 +7,12 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { EyeIcon, EyeOffIcon, LogIn } from 'lucide-react';
 import AnimatedTransition from '@/components/ui/AnimatedTransition';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,17 +25,17 @@ const Login = () => {
       <div className="container mx-auto px-4 max-w-md py-12">
         <div className="bg-card border border-border rounded-xl p-8 shadow-sm">
           <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold mb-2">{t('welcomeBack')}</h1>
-            <p className="text-muted-foreground">{t('signInToYourAccount')}</p>
+            <h1 className="text-2xl font-bold mb-2">Welcome Back</h1>
+            <p className="text-muted-foreground">Sign in to your account to continue</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email">{t('email')}</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder={t('enterYourEmail')}
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -46,16 +44,16 @@ const Login = () => {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <Label htmlFor="password">{t('password')}</Label>
+                <Label htmlFor="password">Password</Label>
                 <Link to="/forgot-password" className="text-xs text-primary hover:underline">
-                  {t('forgotPassword')}
+                  Forgot password?
                 </Link>
               </div>
               <div className="relative">
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
-                  placeholder={t('enterYourPassword')}
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -81,21 +79,21 @@ const Login = () => {
                 onCheckedChange={(checked) => setRememberMe(checked as boolean)} 
               />
               <Label htmlFor="remember" className="text-sm font-normal">
-                {t('rememberMe')}
+                Remember me for 30 days
               </Label>
             </div>
 
             <Button type="submit" className="w-full">
               <LogIn className="h-4 w-4 mr-2" />
-              {t('signIn')}
+              Sign In
             </Button>
           </form>
 
           <div className="mt-6 text-center text-sm">
             <p className="text-muted-foreground">
-              {t('dontHaveAccount')}{' '}
+              Don't have an account?{' '}
               <Link to="/register" className="text-primary font-medium hover:underline">
-                {t('signUp')}
+                Sign up
               </Link>
             </p>
           </div>

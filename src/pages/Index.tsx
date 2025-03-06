@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import ForumCard from '@/components/forum/ForumCard';
 import CourseCard from '@/components/course/CourseCard';
 import AnimatedTransition from '@/components/ui/AnimatedTransition';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 // Sample data for popular forums
 const popularForums = [
@@ -103,7 +102,6 @@ const itemVariants = {
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -120,25 +118,26 @@ const Index = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-sm font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-4">
-              {t('welcomeTag')}
+              Welcome to EduForum Connect
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              {t('heroTitle1')} <br className="hidden md:block" />
-              <span className="text-gradient">{t('heroTitle2')}</span>
+              Learn, Share, and Grow <br className="hidden md:block" />
+              <span className="text-gradient">Together</span>
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8">
-              {t('heroSubtitle')}
+              An interactive platform for students and teachers to collaborate, 
+              share knowledge, and enhance the learning experience.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/register">
                 <Button size="lg" className="rounded-full px-8">
-                  {t('getStarted')}
+                  Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link to="/courses">
                 <Button size="lg" variant="outline" className="rounded-full px-8">
-                  {t('exploreCourses')}
+                  Explore Courses
                 </Button>
               </Link>
             </div>
@@ -156,7 +155,7 @@ const Index = () => {
                 <Users className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold">10,000+</h3>
-              <p className="text-muted-foreground text-sm">{t('activeUsers')}</p>
+              <p className="text-muted-foreground text-sm">Active Users</p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-col items-center">
@@ -164,7 +163,7 @@ const Index = () => {
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold">500+</h3>
-              <p className="text-muted-foreground text-sm">{t('courses')}</p>
+              <p className="text-muted-foreground text-sm">Courses</p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-col items-center">
@@ -172,7 +171,7 @@ const Index = () => {
                 <MessageSquare className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold">15,000+</h3>
-              <p className="text-muted-foreground text-sm">{t('forumPosts')}</p>
+              <p className="text-muted-foreground text-sm">Forum Posts</p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-col items-center">
@@ -180,7 +179,7 @@ const Index = () => {
                 <Award className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold">98%</h3>
-              <p className="text-muted-foreground text-sm">{t('satisfaction')}</p>
+              <p className="text-muted-foreground text-sm">Satisfaction</p>
             </motion.div>
           </motion.div>
         </section>
@@ -188,9 +187,9 @@ const Index = () => {
         {/* Features Section */}
         <section className="py-16 bg-secondary/30 rounded-3xl my-16 px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{t('whyChoose')}</h2>
+            <h2 className="text-3xl font-bold mb-4">Why Choose EduForum Connect</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('whyChooseSubtitle')}
+              A comprehensive platform designed to enhance your educational journey through collaboration, structured learning, and real-time interaction.
             </p>
           </div>
           
@@ -202,9 +201,9 @@ const Index = () => {
               <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <MessageSquare className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-medium mb-2">{t('interactiveForums')}</h3>
+              <h3 className="text-xl font-medium mb-2">Interactive Forums</h3>
               <p className="text-muted-foreground">
-                {t('interactiveForumsDesc')}
+                Engage in discussions, ask questions, and share knowledge with peers and instructors in a structured environment.
               </p>
             </motion.div>
             
@@ -215,9 +214,9 @@ const Index = () => {
               <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-medium mb-2">{t('structuredCourses')}</h3>
+              <h3 className="text-xl font-medium mb-2">Structured Courses</h3>
               <p className="text-muted-foreground">
-                {t('structuredCoursesDesc')}
+                Access comprehensive courses with lessons, exercises, and assessments to track your learning progress.
               </p>
             </motion.div>
             
@@ -228,9 +227,9 @@ const Index = () => {
               <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <Users className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-medium mb-2">{t('teacherSupport')}</h3>
+              <h3 className="text-xl font-medium mb-2">Teacher Support</h3>
               <p className="text-muted-foreground">
-                {t('teacherSupportDesc')}
+                Get direct assistance and guidance from qualified teachers who can monitor your progress and provide feedback.
               </p>
             </motion.div>
           </div>
@@ -239,10 +238,10 @@ const Index = () => {
         {/* Popular Forums Section */}
         <section className="py-12">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold">{t('popularForums')}</h2>
+            <h2 className="text-2xl font-bold">Popular Forums</h2>
             <Link to="/forums">
               <Button variant="ghost" className="flex items-center">
-                {t('viewAll')}
+                View All
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -258,10 +257,10 @@ const Index = () => {
         {/* Featured Courses Section */}
         <section className="py-12">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold">{t('featuredCourses')}</h2>
+            <h2 className="text-2xl font-bold">Featured Courses</h2>
             <Link to="/courses">
               <Button variant="ghost" className="flex items-center">
-                {t('viewAll')}
+                View All
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -277,13 +276,13 @@ const Index = () => {
         {/* Call to Action */}
         <section className="py-16 my-12 rounded-3xl bg-gradient-to-r from-primary/10 to-primary/5 text-center">
           <div className="max-w-3xl mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-4">{t('readyToStart')}</h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
             <p className="text-muted-foreground text-lg mb-8">
-              {t('readyToStartSubtitle')}
+              Join our community of learners and teachers to enhance your educational journey today.
             </p>
             <Link to="/register">
               <Button size="lg" className="rounded-full px-8">
-                {t('createAccount')}
+                Create Account
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

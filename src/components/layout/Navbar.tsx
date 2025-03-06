@@ -1,17 +1,15 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, User, Book, MessageCircle, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { useLanguage } from '@/contexts/LanguageContext';
-import NotificationBell from '@/components/notifications/NotificationBell';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
-  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +37,7 @@ const Navbar = () => {
             <div className="relative">
               <Input
                 type="text"
-                placeholder={t('searchPlaceholder')}
+                placeholder="Search forums, courses..."
                 className="pr-8 pl-10 py-2 w-full rounded-full bg-secondary/50"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -50,23 +48,22 @@ const Navbar = () => {
         {!isMobile && (
           <nav className="hidden md:flex items-center space-x-6">
             <Link to="/forums" className="text-foreground/80 hover:text-primary transition-colors">
-              {t('forums')}
+              Forums
             </Link>
             <Link to="/courses" className="text-foreground/80 hover:text-primary transition-colors">
-              {t('courses')}
+              Courses
             </Link>
             <Link to="/dashboard" className="text-foreground/80 hover:text-primary transition-colors">
-              {t('dashboard')}
+              Dashboard
             </Link>
-            <NotificationBell />
             <Link to="/login">
               <Button variant="ghost" size="sm" className="rounded-full">
-                {t('login')}
+                Login
               </Button>
             </Link>
             <Link to="/register">
               <Button variant="default" size="sm" className="rounded-full">
-                {t('register')}
+                Register
               </Button>
             </Link>
           </nav>
@@ -84,13 +81,14 @@ const Navbar = () => {
         )}
       </div>
 
+      {/* Mobile menu */}
       {isMobile && isMenuOpen && (
         <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-sm z-40 animate-fade-in">
           <div className="container px-4 py-6 flex flex-col space-y-6">
             <div className="relative">
               <Input
                 type="text"
-                placeholder={t('searchPlaceholder')}
+                placeholder="Search forums, courses..."
                 className="pr-8 pl-10 py-2 w-full rounded-full bg-secondary/50"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -103,7 +101,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <MessageCircle className="h-5 w-5 text-primary" />
-                <span>{t('forums')}</span>
+                <span>Forums</span>
               </Link>
               <Link 
                 to="/courses" 
@@ -111,7 +109,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Book className="h-5 w-5 text-primary" />
-                <span>{t('courses')}</span>
+                <span>Courses</span>
               </Link>
               <Link 
                 to="/dashboard" 
@@ -119,16 +117,16 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <User className="h-5 w-5 text-primary" />
-                <span>{t('dashboard')}</span>
+                <span>Dashboard</span>
               </Link>
             </nav>
             
             <div className="flex flex-col space-y-2 mt-auto">
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="outline" className="w-full justify-center">{t('login')}</Button>
+                <Button variant="outline" className="w-full justify-center">Login</Button>
               </Link>
               <Link to="/register" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="default" className="w-full justify-center">{t('register')}</Button>
+                <Button variant="default" className="w-full justify-center">Register</Button>
               </Link>
             </div>
           </div>
