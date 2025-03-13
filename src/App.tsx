@@ -14,11 +14,21 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Forums from "./pages/Forums";
+import ForumDetail from "./pages/ForumDetail";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import Teacher from "./pages/Teacher";
+import Resources from "./pages/Resources";
+import TeachersList from "./pages/TeachersList";
+import HelpCenter from "./pages/HelpCenter";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import Feedback from "./pages/Feedback";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
 
 // Layout components
 import Navbar from "./components/layout/Navbar";
@@ -39,10 +49,20 @@ const AnimatedRoutes = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/forums" element={<Forums />} />
+        <Route path="/forums/:id" element={<ForumDetail />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CourseDetail />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/teacher" element={<Teacher />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/teachers" element={<TeachersList />} />
+        <Route path="/help" element={<HelpCenter />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
