@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,6 +13,7 @@ const ForgotPassword = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +25,13 @@ const ForgotPassword = () => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       toast({
-        title: "Reset link sent",
-        description: "Please check your email for password reset instructions.",
+        title: "Verification code sent",
+        description: "Please check your email for the 8-digit verification code.",
       });
+      // Navigate to verification code page after a brief delay
+      setTimeout(() => {
+        navigate('/verify-code');
+      }, 1500);
     }, 1500);
   };
 
@@ -38,8 +43,8 @@ const ForgotPassword = () => {
             <h1 className="text-2xl font-bold mb-2">Reset Password</h1>
             <p className="text-muted-foreground">
               {!isSubmitted 
-                ? "Enter your email to receive a password reset link" 
-                : "Check your email for reset instructions"
+                ? "Enter your email to receive a verification code" 
+                : "Check your email for the verification code"
               }
             </p>
           </div>
@@ -65,7 +70,7 @@ const ForgotPassword = () => {
                 disabled={isSubmitting || !email}
               >
                 <Send className="h-4 w-4 mr-2" />
-                {isSubmitting ? "Sending..." : "Send Reset Link"}
+                {isSubmitting ? "Sending..." : "Send Verification Code"}
               </Button>
 
               <div className="text-center">
@@ -82,23 +87,27 @@ const ForgotPassword = () => {
             <div className="space-y-6">
               <div className="bg-primary/10 text-primary p-4 rounded-md text-center">
                 If an account exists with <strong>{email}</strong>, you will receive
-                a password reset link shortly.
+                a verification code shortly.
               </div>
               
-              <div className="text-center space-y-4">
-                <p className="text-sm text-muted-foreground">
-                  Didn't receive an email? Check your spam folder or try again.
-                </p>
+              <div className="flex flex-col space-y-3">
+                <Button 
+                  onClick={() => navigate('/verify-code')}
+                  className="w-full"
+                >
+                  Enter Verification Code
+                </Button>
+                
                 <Button 
                   variant="outline" 
                   onClick={() => setIsSubmitted(false)}
-                  className="w-full"
                 >
-                  Try Again
+                  Try Different Email
                 </Button>
+                
                 <Link 
                   to="/login" 
-                  className="text-primary hover:underline inline-flex items-center text-sm"
+                  className="text-primary hover:underline inline-flex items-center justify-center text-sm mt-2"
                 >
                   <ArrowLeft className="h-4 w-4 mr-1" />
                   Back to login
