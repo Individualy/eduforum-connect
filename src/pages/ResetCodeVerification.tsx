@@ -1,5 +1,5 @@
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -66,7 +66,7 @@ const ResetCodeVerification = () => {
               </InputOTP>
               
               <div className="text-center text-sm text-muted-foreground">
-                Didn't receive a code? <button className="text-primary hover:underline">Resend</button>
+                Didn't receive a code? <button type="button" className="text-primary hover:underline">Resend</button>
               </div>
             </div>
 
