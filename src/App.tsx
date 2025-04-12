@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { AssistantProvider } from "./contexts/AssistantContext";
+import AiAssistant from "./components/assistant/AiAssistant";
 
 // Pages
 import Index from "./pages/Index";
@@ -98,17 +100,20 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <LanguageProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow pt-24">
-              <AnimatedRoutes />
-            </main>
-            <Footer />
-          </div>
-        </BrowserRouter>
+        <AssistantProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow pt-24">
+                <AnimatedRoutes />
+              </main>
+              <Footer />
+              <AiAssistant />
+            </div>
+          </BrowserRouter>
+        </AssistantProvider>
       </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
