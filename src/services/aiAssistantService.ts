@@ -31,6 +31,7 @@ export const sendMessageToAssistant = async (message: string): Promise<AiRespons
     // For now, we'll return a mock response after a short delay
     await new Promise(resolve => setTimeout(resolve, 800));
     
+    // This is where you would process the actual response from Google AI Studio
     return {
       text: `Đây là phản hồi mẫu cho tin nhắn: "${message}". Trong ứng dụng thực tế, điều này sẽ được thay thế bằng phản hồi từ Google AI Studio API.`,
       timestamp: new Date()
